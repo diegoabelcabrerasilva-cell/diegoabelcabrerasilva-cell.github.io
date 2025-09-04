@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Anabella</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: url("taylor-bg.jpg") center/cover fixed no-repeat;
+    }
+    .overlay {
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .card {
+      perspective: 1500px;
+    }
+    .card-inner {
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .card.open .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      backface-visibility: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+    }
+    .card-front {
+      background: linear-gradient(135deg, #fbcfe8, #c084fc, #93c5fd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .card-back {
+      background: white;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+
+  <div class="overlay absolute inset-0"></div>
+
+  <div class="card relative w-96 h-[35rem] z-10">
+    <div class="card-inner relative w-full h-full">
+
+      <!-- Portada -->
+      <div class="card-front shadow-2xl text-center p-6">
+        <h1 class="text-4xl font-bold text-pink-700">🎂 Feliz Cumpleaños</h1>
+        <p class="text-xl text-gray-700 mt-3">ANABELLA 💖</p>
+        <button onclick="openCard()" class="mt-6 px-4 py-2 bg-pink-600 text-white rounded-xl shadow hover:scale-105 transition-transform">
+          Abrir Tarjeta
+        </button>
+      </div>
+
+      <!-- Interior -->
+      <div class="card-back shadow-2xl rounded-2xl p-6 text-center">
+        <h2 class="text-3xl font-bold text-pink-600">✨ Feliz 22, mi amor ✨</h2>
+        <p class="mt-4 text-gray-700 leading-relaxed text-justify">
+          Felizzzz cumpleaaaaños mi amoooooor, te amo muchisisismooooo tu sabes que eres una persona muy especial en mi vida, y bueno pues jdsjjss hoy es un dia muy importanteee porque cumple años la mejor persona que existe en el mundooo, mi novia preciosaaaa.  
+          Feliz cumpleañooos loquita, jdsjs este es el tercer cumpleaños que estamos celebrando juntos y que sean todos los que vienen, de verdad amo pasar cada pedacito de tiempo a tu lado. Me voy a encargar de que mañana la pases muy bonito y disfrutes tu cumple, así tengas clasees jsdjds te vas a divertir :b y vamos a ir a comer pollito como dijiste jsdjds.  
+          Felices 22 mi Loquita hermosa &lt;333
+        </p>
+
+        <!-- Galería -->
+        <div class="grid grid-cols-2 gap-3 mt-6">
+          <img src="WhatsApp Image 2025-09-03 at 11.52.58 PM.jpeg" alt="Foto 1" class="rounded-lg shadow-lg">
+          <img src="WhatsApp Image 2025-09-03 at 11.49.38 PM (1).jpeg" alt="Foto 2" class="rounded-lg shadow-lg">
+        </div>
+
+        <!-- Música -->
+        <div class="mt-6">
+          <button id="toggleMusic" onclick="toggleMusic()" class="px-4 py-2 bg-purple-600 text-white rounded-xl shadow hover:scale-105 transition-transform">
+            ⏯️ Pausar/Reanudar Música
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Música YouTube -->
+  <div class="hidden">
+    <iframe id="player" width="0" height="0"
+      src=""
+      allow="autoplay">
+    </iframe>
+  </div>
+
+  <script>
+    let musicPlaying = false;
+    function openCard() {
+      document.querySelector(".card").classList.add("open");
+      playMusic();
+    }
+
+    function playMusic() {
+      document.getElementById("player").src = "https://www.youtube.com/embed/TPYlbKNZPGg?autoplay=1";
+      musicPlaying = true;
+    }
+
+    function toggleMusic() {
+      const player = document.getElementById("player");
+      if (musicPlaying) {
+        player.src = "";
+        musicPlaying = false;
+      } else {
+        playMusic();
+      }
+    }
+  </script>
+
+</body>
+</html>
