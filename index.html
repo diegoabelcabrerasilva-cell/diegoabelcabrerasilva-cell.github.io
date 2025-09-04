@@ -84,33 +84,33 @@
     </div>
   </div>
 
-  <!-- Música YouTube -->
-  <div class="hidden">
-    <iframe id="player" width="0" height="0"
-      src=""
-      allow="autoplay">
-    </iframe>
-  </div>
+  <!-- Audio -->
+  <audio id="music" loop>
+    <source src="cancion.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     let musicPlaying = false;
+
     function openCard() {
       document.querySelector(".card").classList.add("open");
       playMusic();
     }
 
     function playMusic() {
-      document.getElementById("player").src = "https://www.youtube.com/embed/TPYlbKNZPGg?autoplay=1";
+      const music = document.getElementById("music");
+      music.play();
       musicPlaying = true;
     }
 
     function toggleMusic() {
-      const player = document.getElementById("player");
+      const music = document.getElementById("music");
       if (musicPlaying) {
-        player.src = "";
+        music.pause();
         musicPlaying = false;
       } else {
-        playMusic();
+        music.play();
+        musicPlaying = true;
       }
     }
   </script>
