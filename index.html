@@ -45,9 +45,19 @@
 </head>
 <body class="min-h-screen flex items-center justify-center">
 
+  <!-- Video inicial -->
+  <div id="introVideoContainer" class="absolute inset-0 flex items-center justify-center bg-black z-20">
+    <video id="introVideo" class="w-full h-full object-contain">
+      <source src="video.mp4" type="video/mp4">
+      Tu navegador no soporta el formato de video.
+    </video>
+  </div>
+
+  <!-- Fondo -->
   <div class="overlay absolute inset-0"></div>
 
-  <div class="card relative w-96 h-[35rem] z-10">
+  <!-- Tarjeta -->
+  <div id="cardContainer" class="hidden card relative w-96 h-[35rem] z-10">
     <div class="card-inner relative w-full h-full">
 
       <!-- Portada -->
@@ -63,9 +73,7 @@
       <div class="card-back shadow-2xl rounded-2xl p-6 text-center">
         <h2 class="text-3xl font-bold text-pink-600">✨ Feliz 22, mi amor ✨</h2>
         <p class="mt-4 text-gray-700 leading-relaxed text-justify">
-          Felizzzz cumpleaaaaños mi amoooooor, te amo muchisisismooooo tu sabes que eres una persona muy especial en mi vida, y bueno pues jdsjjss hoy es un dia muy importanteee porque cumple años la mejor persona que existe en el mundooo, mi novia preciosaaaa.  
-          Feliz cumpleañooos loquita, jdsjs este es el tercer cumpleaños que estamos celebrando juntos y que sean todos los que vienen, de verdad amo pasar cada pedacito de tiempo a tu lado. Me voy a encargar de que mañana la pases muy bonito y disfrutes tu cumple, así tengas clasees jsdjds te vas a divertir :b y vamos a ir a comer pollito como dijiste jsdjds.  
-          Felices 22 mi Loquita hermosa &lt;333
+          Felizzzz cumpleaaaaños mi amoooooor, te amo muchisisismooooo...
         </p>
 
         <!-- Galería -->
@@ -91,6 +99,25 @@
 
   <script>
     let musicPlaying = false;
+    let videoStarted = false;
+
+    const introVideo = document.getElementById("introVideo");
+    const introVideoContainer = document.getElementById("introVideoContainer");
+    const cardContainer = document.getElementById("cardContainer");
+
+    // Al hacer el primer click en la página, se inicia el video
+    document.body.addEventListener("click", () => {
+      if (!videoStarted) {
+        introVideo.play();
+        videoStarted = true;
+      }
+    });
+
+    // Cuando termina el video, se oculta y aparece la tarjeta
+    introVideo.addEventListener("ended", () => {
+      introVideoContainer.classList.add("hidden");
+      cardContainer.classList.remove("hidden");
+    });
 
     function openCard() {
       document.querySelector(".card").classList.add("open");
@@ -117,3 +144,5 @@
 
 </body>
 </html>
+
+
